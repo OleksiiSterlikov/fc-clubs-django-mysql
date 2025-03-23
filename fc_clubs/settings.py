@@ -75,11 +75,13 @@ WSGI_APPLICATION = 'fc_clubs.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.mysql",
-        "OPTIONS": {
-            "read_default_file": "./my.cnf",
-        },
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'fc_clubs',
+        'USER': 'user',
+        'PASSWORD': 'user',
+        'HOST': 'db',
+        'PORT': '3306',
     }
 }
 

@@ -10,5 +10,14 @@ Use the Docker for installation application
 ## Usage
 Starting
 ```bash
-docker compose up
+docker compose up -d
+```
+First use you need make migrations
+```bash
+# Go to web container
+docker compose exec web bash
+# Create migrations
+python manage.py makemigrations
+# Running migrations
+python manage.py migrate
 ```
