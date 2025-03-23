@@ -1,0 +1,14 @@
+h1 {
+    color: orangered;
+}
+
+.navbar-brand {
+    color: lightsteelblue;
+    font-size: 44px
+}
+
+.nav-item {
+    color: indianred;
+    font-size: 22px;
+    font-weight: bold;
+}
