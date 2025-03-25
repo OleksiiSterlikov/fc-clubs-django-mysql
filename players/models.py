@@ -10,5 +10,8 @@ class Player(models.Model):
     birth_date = models.DateField()
     club = models.ManyToManyField(Club)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    approved_by = models.ForeignKey(User, related_name='approved_by', null=True, on_delete=models.SET_NULL)
+    approved_by = models.ForeignKey(User, related_name='player_approved_by', null=True, on_delete=models.SET_NULL)
     approved = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f'{self.first_name} {self.last_name}'

@@ -1,10 +1,14 @@
 from django.db import models
+from django.contrib.auth.models import User
+
 
 # Create your models here.
 class Club(models.Model):
     name = models.CharField(max_length=100)
     location = models.CharField(max_length=100)
-    url = models.CharField(max_length=100)
+    user = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
+    approved_by = models.ForeignKey(User, related_name='club_approved_by', null=True, on_delete=models.SET_NULL)
+    approved = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.name
+        return f'{self.name} {self.location}'
