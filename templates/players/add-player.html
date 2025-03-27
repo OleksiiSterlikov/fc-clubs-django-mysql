@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <h1 class="text-center">Add Club</h1>
+            <form method="POST" action="{% url 'add_player' %}">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="first_name" class="form-label">First name</label>
+                    <input type="text" class="form-control" name="first_name" id="first_name" placeholder="Michael">
+                </div>
+                <div class="mb-3">
+                    <label for="last_name" class="form-label">Last name</label>
+                    <input type="text" class="form-control" name="last_name" id="last_name" placeholder="Jackson">
+                </div>
+                <div class="mb-3">
+                    <label for="birth_date" class="form-label">Birth date</label>
+                    <input type="date" class="form-control" name="birth_date" id="birth_date" placeholder="01/01/2000">
+                </div>
+                <div class="mb-3">
+                    <select class="form-select" aria-label="Default select example" name="club_id" id="club_id" >
+                        <option selected>Select Club</option>
+                        {% for club in clubs %}
+                            <option value="{{ club.id }}">{{ club.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
