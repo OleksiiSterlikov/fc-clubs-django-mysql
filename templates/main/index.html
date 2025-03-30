@@ -1,5 +1,23 @@
-{%  extends 'base.html' %}
+{% extends 'base.html' %}
 
 {% block content %}
-    <h1>Football clubs</h1>
+    <div class="container">
+        <div class="row">
+            <h1>Football Clubs</h1>
+            <div class="cards-list">
+                {% for club in clubs %}
+                    <div class="card" style="width: 18rem;">
+                        <img src="..." class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h4 class="card-title">{{ club.name }} {{ club.location }}</h4>
+                            <h5 class="card-since">since: {{ club.since_year }}</h5>
+                            <p class="card-text">{{ club.description }}</p>
+                            <p><a href="{{ club.site_page }}" class="card-link">Go to the site</a></p>
+                            <a href="{%  url "details_club" id=club.id %}" class="btn btn-primary">Details</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
 {% endblock %}
