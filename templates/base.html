@@ -22,10 +22,12 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 {% for menu_item in menu_items %}
-                    <li class="nav-item item">
-                        <a class="nav-link active" aria-current="page"
-                           href="{{ menu_item.url }}">{{ menu_item.name }}</a>
-                    </li>
+                    {% if menu_item.url == '/clubs/add' or menu_item.url == '/players/add' and request.user.is_authenticated %}
+                        <li class="nav-item item">
+                            <a class="nav-link active" aria-current="page"
+                               href="{{ menu_item.url }}">{{ menu_item.name }}</a>
+                        </li>
+                    {% endif %}
                 {% endfor %}
             </ul>
         </div>
