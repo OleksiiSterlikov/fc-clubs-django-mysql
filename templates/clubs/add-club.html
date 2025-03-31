@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <h1 class="text-center">Add Club</h1>
-            <form method="POST" action="{% url 'add_club' %}">
+            <form method="POST" enctype="multipart/form-data" action="{% url 'add_club' %}">
                 {% csrf_token %}
                 <div class="mb-3">
                     <label for="name" class="form-label">Name</label>
@@ -15,10 +15,9 @@
                     <input type="text" class="form-control" name="location" id="location" placeholder="Kyiv">
                 </div>
                 <div class="input-group mb-3">
-                    <input type="file" class="form-control" id="img_emblem">
+                    <input type="file" class="form-control" name="img_emblem" id="img_emblem">
                     <label class="input-group-text" for="img_emblem">Upload</label>
                 </div>
-
                 <div class="mb-3">
                     <label for="since_year" class="form-label">Since</label>
                     <input type="text" class="form-control" name="since_year" id="since_year" placeholder="1927">
