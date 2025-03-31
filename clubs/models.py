@@ -6,7 +6,8 @@ from django.contrib.auth.models import User
 class Club(models.Model):
     name = models.CharField(max_length=100)
     location = models.CharField(max_length=100)
-    since_year = models.IntegerField(max_length=100, null=True)
+    img_emblem = models.ImageField(upload_to='static/images/', default='static/images/Default_image.png', blank=True)
+    since_year = models.IntegerField(null=True)
     description = models.TextField(max_length=256, null=True)
     site_page = models.URLField(max_length=256, null=True)
     user = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
