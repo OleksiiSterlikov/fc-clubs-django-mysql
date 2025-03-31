@@ -20,6 +20,24 @@
                     </div>
                 {% endfor %}
             </div>
+
+            <h1>Football Players</h1>
+            <div class="cards-list">
+                {% for player in players %}
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                            <div class="name-image">
+                                <h4 class="card-title">{{ player.first_name }} {{ player.last_name }}</h4>
+                                <img src="{{ player.club.img_emblem }}" class="card-img" id="emblem" alt="...">
+                            </div>
+                            <h5 class="card-since">club: {{ player.club.name }} {{ player.club.location }}</h5>
+{#                            <p class="card-text">{{ club.description }}</p>#}
+{#                            <p><a href="{{ club.site_page }}" class="card-link">Go to the site</a></p>#}
+{#                            <a href="{%  url "details_club" id=club.id %}" class="btn btn-primary">Details</a>#}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
         </div>
     </div>
 {% endblock %}

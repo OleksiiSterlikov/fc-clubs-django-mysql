@@ -8,7 +8,7 @@ class Player(models.Model):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     birth_date = models.DateField()
-    club = models.ManyToManyField(Club)
+    club = models.ForeignKey(Club, null=True, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     approved_by = models.ForeignKey(User, related_name='player_approved_by', null=True, on_delete=models.SET_NULL)
     approved = models.BooleanField(default=False)
