@@ -7,9 +7,11 @@
             <div class="cards-list">
                 {% for club in clubs %}
                     <div class="card" style="width: 18rem;">
-                        <img src="..." class="card-img-top" alt="...">
                         <div class="card-body">
-                            <h4 class="card-title">{{ club.name }} {{ club.location }}</h4>
+                            <div class="name-image">
+                                <h4 class="card-title">{{ club.name }} {{ club.location }}</h4>
+                                <img src="{{ club.img_emblem }}" class="card-img" id="emblem" alt="...">
+                            </div>
                             <h5 class="card-since">since: {{ club.since_year }}</h5>
                             <p class="card-text">{{ club.description }}</p>
                             <p><a href="{{ club.site_page }}" class="card-link">Go to the site</a></p>

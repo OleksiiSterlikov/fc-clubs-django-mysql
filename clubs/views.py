@@ -10,6 +10,7 @@ def add_club(request):
             club = Club()
             club.name = request.POST['name']
             club.location = request.POST['location']
+            club.img_emblem = request.POST['img_emblem']
             club.since_year = request.POST['since_year']
             club.description = request.POST['description']
             club.site_page = request.POST['site_page']

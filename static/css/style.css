@@ -12,3 +12,12 @@ h1 {
     font-size: 22px;
     font-weight: bold;
 }
+
+.name-image {
+    display: inline-flex;
+}
+
+.card-img {
+    width: 90px;
+
+}
