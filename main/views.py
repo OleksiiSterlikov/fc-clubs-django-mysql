@@ -8,7 +8,7 @@ from django.db.models import Q
 # Create your views here.
 def home(request):
     menu_items = MenuItem.objects.all()
-    clubs = Club.objects.filter(display_on_main_page=True, approved=True).order_by("-name")
+    clubs = Club.objects.filter(display_on_main_page=True, approved=True).order_by("name")
     players = Player.objects.filter(Q(display_on_main_page=True) | Q(approved=True))
     return render(request, 'main/index.html',
                   {

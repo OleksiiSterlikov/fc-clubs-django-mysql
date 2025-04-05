@@ -1,5 +1,16 @@
 
 services:
+  nginx:
+    build: ./nginx
+    volumes:
+      - ./static:/home/app/web/staticfiles
+    ports:
+      - 1337:80
+    depends_on:
+      - web
+    networks:
+      - app
+
   db:
     image: mysql:8.0
     ports:
@@ -18,7 +29,7 @@ services:
     build:
       dockerfile: ./docker/Dockerfile
       context: ./
-    command: ./wait-for-it.sh db:3306 -- ./manage.py runserver 0.0.0.0:8000
+    command: gunicorn fc_clubs.wsgi:application --bind 0.0.0.0:8000
     volumes:
       - .:/fc_clubs
     ports:
