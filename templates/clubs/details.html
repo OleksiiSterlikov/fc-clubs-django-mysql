@@ -1,10 +1,12 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <div class="container">
         <div class="row">
             <div class="name-image-details">
-                <img src="{{ club.img_emblem }}" class="card-img" id="emblem" alt="...">
+                <img src="{% static club.img_emblem|cut:'static/' %}" class="card-img" id="emblem" alt="...">
             </div>
             <h4 class="card-title-details">{{ club.name }} {{ club.location }}</h4>
             <p>{{ club.description }}</p>
