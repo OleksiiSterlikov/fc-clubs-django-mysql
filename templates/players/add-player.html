@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <div class="container">
         <div class="row">
             <h1 class="text-center">Add Club</h1>
@@ -20,7 +22,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="birth_date" class="form-label">Club</label>
-                    <select class="form-select" aria-label="Default select example" name="club_id" id="club_id" >
+                    <select class="form-select" aria-label="Default select example" name="club_id" id="club_id">
                         <option selected>Select Club</option>
                         {% for club in clubs %}
                             <option value="{{ club.id }}">{{ club.name }}</option>

@@ -1,1 +1,1 @@
-/fc_clubs/docker/wait-for-it db:3306 -- python /fc_clubs/manage.py migrate
+/fc_clubs/wait-for-it db:3306 -- python /fc_clubs/manage.py migrate
