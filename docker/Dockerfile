@@ -6,3 +6,5 @@ ADD . /fc_clubs
 RUN pip install --upgrade pip && pip install -r requirements.txt
 RUN pip install mysqlclient
 COPY . /fc_clubs
+
+ENTRYPOINT ["./docker/entrypoint.sh"]
