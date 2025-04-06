@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-!)o()frd=zcy+=jm#4vhf3zyhv19&n_#)$sbs0owv)r%p210ru
 DEBUG = True
 
 ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1']
-
+CSRF_TRUSTED_ORIGINS = ['http://localhost:1337']
 
 # Application definition
 
@@ -127,7 +127,7 @@ USE_TZ = True
 #     "/var/fc_clubs/static/",
 # ]
 STATIC_URL = 'static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
