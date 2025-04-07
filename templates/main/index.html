@@ -10,7 +10,7 @@
                         <div class="card-body">
                             <div class="name-image">
                                 <h4 class="card-title">{{ club.name }} {{ club.location }}</h4>
-                                <img src="{{ club.img_emblem }}" class="card-img" id="emblem" alt="...">
+                                <img src="{{ club.img_emblem.url }}" class="card-img" id="emblem" alt="...">
                             </div>
                             <h5 class="card-since">since: {{ club.since_year }}</h5>
                             <p class="card-text">{{ club.description }}</p>
