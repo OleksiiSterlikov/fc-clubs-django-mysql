@@ -1,11 +1,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <div class="container">
         <div class="row">
-            <h1 class="text-center">Add Club</h1>
+            <h1 class="text-center">Add Player</h1>
             <form method="POST" action="{% url 'add_player' %}">
                 {% csrf_token %}
                 <div class="mb-3">
