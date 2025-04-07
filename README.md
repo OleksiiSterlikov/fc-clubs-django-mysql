@@ -20,6 +20,12 @@ docker compose exec web bash
 python manage.py makemigrations
 # Running migrations
 python manage.py migrate
-# Create admin user from Django administrative panel 
+```
+Create admin user from Django administrative panel
+```aiignore
 python manage.py createsuperuser
+```
+Copy static files
+```aiignore
+python manage.py collectstatic
 ```
