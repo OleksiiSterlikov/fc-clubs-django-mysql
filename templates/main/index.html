@@ -28,7 +28,7 @@
                         <div class="card-body">
                             <div class="name-image">
                                 <h4 class="card-title">{{ player.first_name }} {{ player.last_name }}</h4>
-                                <img src="{{ player.club.img_emblem }}" class="card-img" id="emblem" alt="...">
+                                <img src="{{ player.club.img_emblem.url }}" class="card-img" id="emblem" alt="...">
                             </div>
                             <h5 class="card-since">club: {{ player.club.name }} {{ player.club.location }}</h5>
 {#                            <p class="card-text">{{ club.description }}</p>#}

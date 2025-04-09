@@ -7,6 +7,15 @@ h1 {
     font-size: 44px
 }
 
+nav .sign {
+    float: right;
+}
+
+nav .user {
+    color: white;
+    float: right;
+}
+
 .nav-item {
     color: indianred;
     font-size: 22px;
