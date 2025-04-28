@@ -3,6 +3,10 @@ from .models import Club
 
 
 def add_club(request):
+    """
+    The function added club. Function checking authentications user and checking requests (GET or POST).
+    If request 'GET' the function returned page adding clubs, if request 'POST' function create Club object and saves them.
+    """
     if request.user.is_authenticated:
         if request.method == "GET":
             return render(request, 'clubs/add-club.html')
@@ -22,6 +26,10 @@ def add_club(request):
         return redirect('/')
 
 def details_club(request, id):
+    """
+    The function of presenting the Club details.
+    If club don't exist, it will be returned Error 404.
+    """
     club = get_object_or_404(Club, id=id)
     return render(request, 'clubs/details.html', {'club': club})
 
