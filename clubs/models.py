@@ -4,6 +4,9 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 class Club(models.Model):
+    """
+    Model for clubs
+    """
     name = models.CharField(max_length=100)
     location = models.CharField(max_length=100)
     img_emblem = models.ImageField(upload_to='clubs/images/', default='clubs/images/Default_image.png', blank=True)

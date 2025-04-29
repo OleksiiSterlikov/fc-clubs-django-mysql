@@ -11,6 +11,9 @@ from django.db.models import Q
 
 # Create your views here.
 def home(request):
+    """
+    Function to render the home page and return clubs and players
+    """
     menu_items = MenuItem.objects.all()
     clubs = Club.objects.filter(display_on_main_page=True, approved=True).order_by("name")
     players = Player.objects.filter(Q(display_on_main_page=True) | Q(approved=True))
@@ -21,6 +24,11 @@ def home(request):
                       'players': players,
                   })
 def sign_up(request):
+    """
+    Function to sign up new user
+    If request POST creates a new user and save them.
+    If request GET render sign up page.
+    """
     if request.method == "POST":
         user = User()
         user.username = request.POST['username']
@@ -39,6 +47,11 @@ def sign_up(request):
         return render(request, 'main/sign-up.html', {})
 
 def sign_in(request):
+    """
+    Function to sign in user.
+    If request POST checking username, password and redirect main page.
+    If request GET render sign in page.
+    """
     if request.method == "POST":
         user = authenticate(username=request.POST['username'], password=request.POST['password'])
         if user is not None:
@@ -48,6 +61,9 @@ def sign_in(request):
         return render(request, 'main/sign-in.html', {})
 
 def logout_user(request):
+    """
+    Function to logout user.
+    """
     if request.user.is_authenticated:
         logout(request)
     return redirect('/')
