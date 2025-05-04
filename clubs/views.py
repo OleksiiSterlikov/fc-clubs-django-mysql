@@ -4,8 +4,8 @@ from .models import Club
 
 def add_club(request):
     """
-    The function added club. Function checking authentications user and checking requests (GET or POST).
-    If request 'GET' the function returned page adding clubs, if request 'POST' function create Club object and saves them.
+    The function added club. Function checking authentifications user and checking requests (GET or POST).
+    If request 'GET' the function returned page adding clubs, if request 'POST' function create object Club and saves them.
     """
     if request.user.is_authenticated:
         if request.method == "GET":
