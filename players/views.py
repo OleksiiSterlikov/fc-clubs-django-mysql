@@ -5,6 +5,11 @@ from .models import Player
 
 
 def add_player(request):
+    """
+    The function added player. Function checking authentifications user and checking requests (GET or POST).
+    If request 'GET' the function returned page adding player, if request 'POST' function create object Player and saves them.
+
+    """
     if request.user.is_authenticated:
         if request.method == 'GET':
             clubs = Club.objects.all()
