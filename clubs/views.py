@@ -25,6 +25,21 @@ def add_club(request):
     else:
         return redirect('/')
 
+
+def edit_club(request, id):
+    if request.user.is_authenticated:
+        club = Club.objects.get(id=id)
+        return render(request, 'clubs/add-club.html', {'club': club})
+    else:
+        raise PermissionError
+
+
+def update_club(request, id):
+    if request.user.is_authenticated:
+        club = Club.objects.get(id=id)
+    return redirect('/')
+
+
 def details_club(request, id):
     """
     The function of presenting the Club details.
@@ -32,4 +47,3 @@ def details_club(request, id):
     """
     club = get_object_or_404(Club, id=id)
     return render(request, 'clubs/details.html', {'club': club})
-
