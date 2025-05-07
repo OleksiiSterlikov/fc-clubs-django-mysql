@@ -4,32 +4,32 @@
     <div class="container">
         <div class="row">
             <h1 class="text-center">Add Club</h1>
-            <form method="POST" enctype="multipart/form-data" action="{% url 'add_club' %}">
+            <form method="POST" enctype="multipart/form-data" {% if club %} action="{% url 'update_club' id=club.id %}" {% else %} action="{% url 'add_club' %}" {% endif %}>
                 {% csrf_token %}
                 <div class="mb-3">
                     <label for="name" class="form-label">Name</label>
-                    <input type="text" class="form-control" name="name" id="name" placeholder="Dynamo">
+                    <input type="text" class="form-control" {% if club %} value="{{ club.name }}" {% endif %} name="name" id="name" placeholder="Dynamo">
                 </div>
                 <div class="mb-3">
                     <label for="location" class="form-label">Location</label>
-                    <input type="text" class="form-control" name="location" id="location" placeholder="Kyiv">
+                    <input type="text" class="form-control" {% if club %} value="{{ club.location }}" {% endif %} name="location" id="location" placeholder="Kyiv">
                 </div>
                 <div class="input-group mb-3">
-                    <input type="file" class="form-control" name="img_emblem" id="img_emblem">
+                    <input type="file" class="form-control" {% if club %} value="{{ club.img_emblem }}" {% endif %}  name="img_emblem" id="img_emblem">
                     <label class="input-group-text" for="img_emblem">Upload</label>
                 </div>
                 <div class="mb-3">
                     <label for="since_year" class="form-label">Since</label>
-                    <input type="text" class="form-control" name="since_year" id="since_year" placeholder="1927">
+                    <input type="text" class="form-control" {% if club %} value="{{ club.since_year }}" {% endif %}  name="since_year" id="since_year" placeholder="1927">
                 </div>
                 <div class="mb-3">
                     <label for="description" class="form-label">Description</label>
-                    <input type="text" class="form-control" name="description" id="description"
+                    <input type="text" class="form-control" {% if club %} value="{{ club.description }}" {% endif %}  name="description" id="description"
                            placeholder="Description">
                 </div>
                 <div class="mb-3">
                     <label for="site_page" class="form-label">Site page</label>
-                    <input type="text" class="form-control" name="site_page" id="site_page" placeholder="fcdynamo.com">
+                    <input type="text" class="form-control" {% if club %} value="{{ club.site_page }}" {% endif %}  name="site_page" id="site_page" placeholder="fcdynamo.com">
                 </div>
                 <div class="col-12">
                     <button type="submit" class="btn btn-primary">Submit</button>

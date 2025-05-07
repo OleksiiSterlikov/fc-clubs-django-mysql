@@ -12,7 +12,7 @@ Starting
 ```bash
 docker compose up -d
 ```
-First use you need make migrations
+First use: you need to make migration
 ```bash
 # Go to web container
 docker compose exec web bash
