@@ -20,3 +20,20 @@ class Club(models.Model):
 
     def __str__(self):
         return f'{self.name} {self.location}'
+
+
+class League(models.Model):
+    title = models.CharField(max_length=256)
+    img_emblem = models.ImageField(upload_to='league/images/', default='league/images/Default_image.png', blank=True)
+    description = models.TextField(max_length=256, null=True)
+
+    def __str__(self):
+        return self.title
+
+
+class LeagueClub(models.Model):
+    league = models.ForeignKey(League, on_delete=models.PROTECT)
+    club = models.ForeignKey(Club, on_delete=models.PROTECT)
+
+    def __str__(self):
+        return f'{self.league} {self.club}'
