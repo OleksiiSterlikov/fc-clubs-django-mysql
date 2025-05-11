@@ -62,7 +62,7 @@ def sign_in(request):
 
 def logout_user(request):
     """
-    Function to logout user.
+    Function to log out user.
     """
     if request.user.is_authenticated:
         logout(request)
