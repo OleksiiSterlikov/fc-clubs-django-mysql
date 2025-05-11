@@ -33,6 +33,10 @@ def add_club(request):
 
 
 def edit_club(request, id):
+    """
+    The function edit club. Function checking authentifications user.
+    If the user is authenticated, the function posts information about the club to the page.
+    """
     if request.user.is_authenticated:
         club = Club.objects.get(id=id)
         leagues = League.objects.all()
@@ -47,6 +51,10 @@ def edit_club(request, id):
 
 
 def add_league(request):
+    """
+    The function added league. Function checking authentifications user and checking requests (GET or POST).
+    If request 'GET' the function returned page adding league, if request 'POST' function create object League and saves them.
+    """
     if request.user.is_authenticated:
         if request.method == 'GET':
             return render(request, 'clubs/league/add-league.html')
@@ -63,6 +71,10 @@ def add_league(request):
 
 
 def update_club(request, id):
+    """
+    The function updated information about club. Function checking authentifications user
+    If the user is authenticated, the function accepts requests changed information about the club and saves them.
+    """
     if request.user.is_authenticated:
         club = Club.objects.get(id=id)
         club.name = request.POST['name']
@@ -83,7 +95,7 @@ def update_club(request, id):
 def details_club(request, id):
     """
     The function of presenting the Club details.
-    If club don't exist, it will be returned Error 404.
+    If the club don't exist, it will be returned Error 404.
     """
     club = get_object_or_404(Club, id=id)
     return render(request, 'clubs/details.html', {'club': club})

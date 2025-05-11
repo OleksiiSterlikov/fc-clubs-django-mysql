@@ -23,6 +23,9 @@ class Club(models.Model):
 
 
 class League(models.Model):
+    """
+    Model for League
+    """
     title = models.CharField(max_length=256)
     img_emblem = models.ImageField(upload_to='league/images/', default='league/images/Default_image.png', blank=True)
     description = models.TextField(max_length=256, null=True)
@@ -32,8 +35,13 @@ class League(models.Model):
 
 
 class LeagueClub(models.Model):
+    """
+    Model for connection between League and Club models.
+    Stores information about club participation in leagues.
+    """
     league = models.ForeignKey(League, on_delete=models.PROTECT)
     club = models.ForeignKey(Club, on_delete=models.PROTECT)
+    played_games = models.IntegerField(default=0)
 
     def __str__(self):
         return f'{self.league} {self.club}'
