@@ -41,7 +41,6 @@ class LeagueClub(models.Model):
     """
     league = models.ForeignKey(League, on_delete=models.PROTECT)
     club = models.ForeignKey(Club, on_delete=models.PROTECT)
-    played_games = models.IntegerField(default=0)
 
     def __str__(self):
         return f'{self.league} {self.club}'

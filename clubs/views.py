@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Club, League, LeagueClub
+from .forms import ClubForm
 
 
 def add_club(request):
@@ -9,25 +10,31 @@ def add_club(request):
     """
     if request.user.is_authenticated:
         if request.method == 'GET':
+            form = ClubForm()
             leagues = League.objects.all()
-            return render(request, 'clubs/add-club.html', {'leagues': leagues})
+            return render(request, 'clubs/add-club.html', {'form': form, 'leagues': leagues})
         else:
-            club = Club()
-            club.name = request.POST['name']
-            club.location = request.POST['location']
-            club.since_year = request.POST['since_year']
-            club.description = request.POST['description']
-            club.site_page = request.POST['site_page']
-            club.user = request.user
-            if 'img_emblem' in request.FILES:
-                club.img_emblem = request.FILES['img_emblem']
-            club.save()
-            for league in request.POST.getlist('leagues', []):
-                league_club = LeagueClub()
-                league_club.club = club
-                league_club.league = League.objects.get(id=int(league))
-                league_club.save()
-            return redirect('/')
+            form = ClubForm(request.POST, request.FILES)
+            if form.is_valid():
+                club = Club()
+                club.name = request.POST['name']
+                club.location = request.POST['location']
+                club.since_year = request.POST['since_year']
+                club.description = request.POST['description']
+                club.site_page = request.POST['site_page']
+                club.user = request.user
+                if 'img_emblem' in request.FILES:
+                    club.img_emblem = request.FILES['img_emblem']
+                club.save()
+                for league in request.POST.getlist('leagues', []):
+                    league_club = LeagueClub()
+                    league_club.club = club
+                    league_club.league = League.objects.get(id=int(league))
+                    league_club.save()
+                form.save()
+                return redirect('/')
+            else:
+                return render(request, 'clubs/add-club.html', {'form': form})
     else:
         return redirect('/')
 
