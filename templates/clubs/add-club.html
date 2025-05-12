@@ -7,15 +7,29 @@
             <form method="POST" enctype="multipart/form-data" {% if club %}
                   action="{% url 'update_club' id=club.id %}" {% else %} action="{% url 'add_club' %}" {% endif %}>
                 {% csrf_token %}
+                {#                {% for field in form %}#}
+                {#                <div class="mb-3">#}
+                {#                    <label for="field" class="form-label">{{ field.label }}</label>#}
+                {#                    {{ field }}#}
+                {#                </div>#}
+                {#                {% endfor %}#}
+                {#                <div class="col-12">#}
+                {#                    <button type="submit" class="btn btn-primary">Submit</button>#}
+                {#                </div>#}
+
                 <div class="mb-3">
                     <label for="name" class="form-label">Name</label>
-                    <input type="text" class="form-control" {% if club %} value="{{ club.name }}" {% endif %}
-                           name="name" id="name" placeholder="Dynamo">
+                    <input type="text" class="form-control" name="name" id="name" placeholder="Dynamo">
+                    {% if form.name.errors %}
+                        <div class="form-text text-danger">{{ form.name.errors }}</div>
+                    {% endif %}
                 </div>
                 <div class="mb-3">
                     <label for="location" class="form-label">Location</label>
-                    <input type="text" class="form-control" {% if club %} value="{{ club.location }}" {% endif %}
-                           name="location" id="location" placeholder="Kyiv">
+                    <input type="text" class="form-control" name="location" id="location" placeholder="Kyiv">
+                    {% if form.location.errors %}
+                        <div class="form-text text-danger">{{ form.location.errors }}</div>
+                    {% endif %}
                 </div>
                 <div class="input-group mb-3">
                     <input type="file" class="form-control" {% if club %} value="{{ club.img_emblem }}" {% endif %}
@@ -46,11 +60,11 @@
                                     {% if club_leagues %}
                                         {% for club in club_leagues %}
                                             {% if club.league_id == league.id %}
-                                                selected
+                                    selected
                                             {% endif %}
                                         {% endfor %}
                                     {% endif %}>
-                                    {{ league.title }}
+                                {{ league.title }}
                             </option>
                         {% endfor %}
                     </select>
