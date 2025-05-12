@@ -1,0 +1,42 @@
+h1 {
+    color: orangered;
+}
+
+.navbar-brand {
+    color: lightsteelblue;
+    font-size: 44px
+}
+
+nav .sign {
+    float: right;
+}
+
+nav .user {
+    color: white;
+    float: right;
+}
+
+.nav-item {
+    color: indianred;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.name-image {
+    display: inline-flex;
+}
+
+.name-image-details {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-img {
+    width: 90px;
+}
+.card-title-details {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

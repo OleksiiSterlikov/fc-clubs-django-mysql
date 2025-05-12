@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <h1 class="text-center">Add League</h1>
+            <form method="POST" action="{% url 'add_league' %}">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="title" class="form-label">Name</label>
+                    <input type="text" class="form-control" name="title" id="title" placeholder="Premier league">
+                </div>
+                <div class="input-group mb-3">
+                    <input type="file" class="form-control" name="img_emblem" id="img_emblem">
+                    <label class="input-group-text" for="img_emblem">Upload</label>
+                </div>
+                <div class="mb-3">
+                    <label for="description" class="form-label">Description</label>
+                    <input type="text" class="form-control" name="description" id="description"
+                           placeholder="Description">
+                </div>
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
