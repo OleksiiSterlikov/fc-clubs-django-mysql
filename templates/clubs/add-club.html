@@ -4,8 +4,12 @@
     <div class="container">
         <div class="row">
             <h1 class="text-center">Add Club</h1>
-            <form method="POST" enctype="multipart/form-data" {% if club %}
-                  action="{% url 'update_club' id=club.id %}" {% else %} action="{% url 'add_club' %}" {% endif %}>
+            <form method="POST" enctype="multipart/form-data"
+                    {% if club %}
+                        action="{% url 'update_club' id=club.id %}"
+                    {% else %}
+                        action="{% url 'add_club' %}"
+                    {% endif %}>
                 {% csrf_token %}
                 {#                {% for field in form %}#}
                 {#                <div class="mb-3">#}
