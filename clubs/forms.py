@@ -1,5 +1,5 @@
 from django import forms
-from .models import Club
+from .models import Club, LeagueClub
 
 
 class ClubForm(forms.ModelForm):
@@ -11,8 +11,4 @@ class ClubForm(forms.ModelForm):
                   'since_year',
                   'description',
                   'site_page',
-                  'user',
-                  'approved_by',
-                  'approved',
-                  'display_on_main_page',
                   ]

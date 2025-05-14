@@ -16,22 +16,12 @@ def add_club(request):
         else:
             form = ClubForm(request.POST, request.FILES)
             if form.is_valid():
-                club = Club()
-                club.name = request.POST['name']
-                club.location = request.POST['location']
-                club.since_year = request.POST['since_year']
-                club.description = request.POST['description']
-                club.site_page = request.POST['site_page']
-                club.user = request.user
-                if 'img_emblem' in request.FILES:
-                    club.img_emblem = request.FILES['img_emblem']
-                club.save()
+                instance = form.save()
                 for league in request.POST.getlist('leagues', []):
                     league_club = LeagueClub()
-                    league_club.club = club
+                    league_club.club = Club.objects.get(id=instance.id)
                     league_club.league = League.objects.get(id=int(league))
                     league_club.save()
-                form.save()
                 return redirect('/')
             else:
                 return render(request, 'clubs/add-club.html', {'form': form})
