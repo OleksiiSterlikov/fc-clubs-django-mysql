@@ -9,6 +9,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.db.models import Q
 
+
 # Create your views here.
 def home(request):
     """
@@ -23,6 +24,8 @@ def home(request):
                       'clubs': clubs,
                       'players': players,
                   })
+
+
 def sign_up(request):
     """
     Function to sign up new user
@@ -46,6 +49,7 @@ def sign_up(request):
     else:
         return render(request, 'main/sign-up.html', {})
 
+
 def sign_in(request):
     """
     Function to sign in user.
@@ -59,6 +63,7 @@ def sign_in(request):
         return redirect('/')
     else:
         return render(request, 'main/sign-in.html', {})
+
 
 def logout_user(request):
     """
