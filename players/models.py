@@ -10,6 +10,7 @@ class Player(models.Model):
     """
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
+    photo = models.ImageField(upload_to='players/images/', default='players/images/Default_player.png', blank=True)
     birth_date = models.DateField()
     club = models.ForeignKey(Club, null=True, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
