@@ -19,6 +19,7 @@ def add_player(request):
             player = Player()
             player.first_name = request.POST['first_name']
             player.last_name = request.POST['last_name']
+            player.photo = request.FILES['photo']
             player.birth_date = request.POST['birth_date']
             player.club = get_object_or_404(Club, id=request.POST['club_id'])
             player.user = request.user
