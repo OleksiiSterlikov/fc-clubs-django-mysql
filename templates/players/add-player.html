@@ -4,37 +4,48 @@
     <div class="container">
         <div class="row">
             <h1 class="text-center">Add Player</h1>
-            <form method="POST" action="{% url 'add_player' %}">
-                {% csrf_token %}
-                <div class="mb-3">
-                    <label for="first_name" class="form-label">First name</label>
-                    <input type="text" class="form-control" name="first_name" id="first_name" placeholder="Michael">
-                </div>
-                <div class="mb-3">
-                    <label for="last_name" class="form-label">Last name</label>
-                    <input type="text" class="form-control" name="last_name" id="last_name" placeholder="Jackson">
-                </div>
-                <div class="input-group mb-3">
-                    <input type="file" class="form-control" value="photo"
-                           name="photo" id="photo">
-                    <label class="input-group-text" for="photo">Upload</label>
-                </div>
-                <div class="mb-3">
-                    <label for="birth_date" class="form-label">Birth date</label>
-                    <input type="date" class="form-control" name="birth_date" id="birth_date" placeholder="01/01/2000">
-                </div>
-                <div class="mb-3">
-                    <label for="birth_date" class="form-label">Club</label>
-                    <select class="form-select" aria-label="Default select example" name="club_id" id="club_id">
-                        <option selected>Select Club</option>
-                        {% for club in clubs %}
-                            <option value="{{ club.id }}">{{ club.name }}</option>
-                        {% endfor %}
-                    </select>
-                </div>
-                <div class="col-12">
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
+            <form method="POST" enctype="multipart/form-dat"
+                    {% if player %}
+                        action="{% url 'update_player' id=player.id%}"
+                    {% else %}
+                        action="{% url 'add_player' %}">
+                    {% endif %}
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="first_name" class="form-label">First name</label>
+                <input type="text" class="form-control" name="first_name" id="first_name" placeholder="Michael">
+                {%  if form.first_name.errors %}
+                    <div class="form-text text-danger">{{ form.first_name.errors }}</div>
+                {% endif %}
+            </div>
+            <div class="mb-3">
+                <label for="last_name" class="form-label">Last name</label>
+                <input type="text" class="form-control" name="last_name" id="last_name" placeholder="Jackson">
+                {%  if form.last_name.errors %}
+                    <div class="form-text text-danger">{{ form.last_name.errors }}</div>
+                {% endif %}
+            </div>
+            <div class="input-group mb-3">
+                <input type="file" class="form-control" {% if player %} value="{{ player.photo }}" {% endif %}
+                       name="photo" id="photo">
+                <label class="input-group-text" for="photo">Upload</label>
+            </div>
+            <div class="mb-3">
+                <label for="birth_date" class="form-label">Birth date</label>
+                <input type="date" class="form-control" name="birth_date" id="birth_date" placeholder="01/01/2000">
+            </div>
+            <div class="mb-3">
+                <label for="birth_date" class="form-label">Club</label>
+                <select class="form-select" aria-label="Default select example" name="club" id="club">
+                    <option selected>Select Club</option>
+                    {% for club in clubs %}
+                        <option value="{{ club.id }}">{{ club.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
             </form>
         </div>
     </div>

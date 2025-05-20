@@ -1,5 +1,5 @@
 from django import forms
-from .models import Club, LeagueClub
+from .models import Club
 
 
 class ClubForm(forms.ModelForm):
