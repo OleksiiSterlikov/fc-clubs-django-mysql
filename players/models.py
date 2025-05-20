@@ -13,7 +13,7 @@ class Player(models.Model):
     photo = models.ImageField(upload_to='players/images/', default='players/images/Default_player.png', blank=True)
     birth_date = models.DateField()
     club = models.ForeignKey(Club, null=True, on_delete=models.CASCADE)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
     approved_by = models.ForeignKey(User, related_name='player_approved_by', null=True, on_delete=models.SET_NULL)
     approved = models.BooleanField(default=False)
     display_on_main_page = models.BooleanField(default=False)
