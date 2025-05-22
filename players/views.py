@@ -18,10 +18,6 @@ def add_player(request):
             return render(request, "players/add-player.html", {'form': form,'clubs': clubs})
         else:
             form = PlayerForm(request.POST, request.FILES)
-            print('+++++++++++++++++++++++++++++++')
-            print(form.is_valid())
-            print(form.data)
-            print('+++++++++++++++++++++++++++++++')
             if form.is_valid():
                 print(form.data)
                 form.save()

@@ -4,12 +4,12 @@
     <div class="container">
         <div class="row">
             <h1 class="text-center">Add Player</h1>
-            <form method="POST" enctype="multipart/form-dat"
+            <form method="POST" enctype="multipart/form-data"
                     {% if player %}
                         action="{% url 'update_player' id=player.id%}"
                     {% else %}
-                        action="{% url 'add_player' %}">
-                    {% endif %}
+                        action="{% url 'add_player' %}"
+                    {% endif %}>
             {% csrf_token %}
             <div class="mb-3">
                 <label for="first_name" class="form-label">First name</label>
