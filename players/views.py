@@ -13,11 +13,11 @@ def add_player(request):
     """
     if request.user.is_authenticated:
         if request.method == 'GET':
-            form = PlayerForm()
+            form = PlayerForm(initial={'user': request.user})
             clubs = Club.objects.all()
             return render(request, "players/add-player.html", {'form': form,'clubs': clubs})
         else:
-            form = PlayerForm(request.POST, request.FILES)
+            form = PlayerForm(request.POST, request.FILES, initial={'user': request.user})
             if form.is_valid():
                 print(form.data)
                 form.save()
