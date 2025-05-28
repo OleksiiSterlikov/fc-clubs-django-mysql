@@ -10,11 +10,11 @@ def add_club(request):
     """
     if request.user.is_authenticated:
         if request.method == 'GET':
-            form = ClubForm()
+            form = ClubForm(initial={'user': request.user})
             leagues = League.objects.all()
             return render(request, 'clubs/add-club.html', {'form': form, 'leagues': leagues})
         else:
-            form = ClubForm(request.POST, request.FILES)
+            form = ClubForm(request.POST, request.FILES, initial={'user': request.user})
             if form.is_valid():
                 instance = form.save()
                 for league in request.POST.getlist('leagues', []):
